@@ -127,7 +127,7 @@
 
   * The complexity of adding a `unit` to `Map` is: O(Log(x)).
 
-  * The complexity of getting the `units` array in the `radius` range is: Dense area performance `<2ms`, sparse area `<1ms`.
+  * Depending on the regional `unit` density: dense areas are less than `2ms` and sparse areas are less than `1ms`.
 
 #### License
 
