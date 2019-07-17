@@ -2,8 +2,8 @@ local class = require "class"
 
 local new_tab = function (asize, hsize) return {} end
 local ok, sys = pcall(require, "sys")
-if ok then
-  new_tab = sys.new_tab
+if ok and type(sys) == table then
+  new_tab = sys.new_tab or function (asize, hsize) return {} end
 end
 
 local type = type
@@ -147,9 +147,22 @@ end
 
 -- 获取指定单位位置
 function Map:get_pos_by_unit (unit)
-  if unit then
-    return get_unit(self.units, unit)
+  if not unit then
+    return error("unit必须是一个有效的类型")
   end
+  local X, Y = get_unit(self.units, unit)
+  if not X or not Y then
+    return nil, "试图获取一个不存在单位位置"
+  end
+  return X, Y
+end
+
+-- 获取指定范围内的单位
+function Map:get_pos_by_range (x, y, radius)
+  if outRange(x, self.X) or outRange(y, self.Y) then
+    return error("进入失败: 错误的X或Y值.")
+  end
+  return range_by_unit(self, nil, x, y, radius)
 end
 
 -- 进入
