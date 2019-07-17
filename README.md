@@ -48,11 +48,15 @@
 
   This method returns the `x` and `y` corresponding to the `unit`.
 
+#### Map:get_range_by_pos(x, y, radius)
+
+  This method returns all `unit`s in the `radius` range of `X, Y`.
+
 #### Map:dumps()
 
   Print the location of all units and units in the map. This method has no return value.
 
-#### Usage
+## Usage
 
   There are some usage examples in the `test.lua` file:
 
@@ -90,7 +94,7 @@
 
   print("-----")
 
-  print("10001 leave from [1], [1], The number of units within the radius is: "..#m:leave(10000))
+  print("10000 leave from [1], [1], The number of units within the radius is: "..#m:leave(10000))
 
   print("The total number of people in the map is: "..m:members())m:dumps()
 
@@ -111,7 +115,7 @@
 
   You can create multiple `Map` objects that can be used for different `scene`.
 
-#### Note
+## Note
 
   * `X`、`Y`、`opt.x`、`opt.y`、`opt.radius` must be integer.
 
@@ -119,9 +123,9 @@
 
   * The array items returned by `enter`, `move`, `leave` contain the following contents: `unit`, `x`, `y`.
 
-  * `unit` can be `String`、`Number`、`Table` type, but these requirements must be met: `unit1 == unit1` and `unit1 == unit2`.
+  * `unit` can be `String`、`Number`、`Table` type, but these requirements must be met: `unit1 == unit1` and `unit1 != unit2`.
 
-#### Algorithm complexity
+## Algorithm complexity
 
   * Positioning a `unit` is generally O(1). (use hash table).
 
@@ -129,6 +133,6 @@
 
   * Depending on the regional `unit` density: dense areas are less than `2ms` and sparse areas are less than `1ms`.
 
-#### License
+## License
 
   [MIT](https://github.com/CandyMi/aoi/blob/master/LICENSE)
