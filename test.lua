@@ -31,7 +31,7 @@ print("The total number of people in the map is: "..m:members())m:dumps()
 
 print("-----")
 
-print("10001 leave from [1], [1], The number of units within the radius is: "..#m:leave(10000))
+print("10000 leave from [1], [1], The number of units within the radius is: "..#m:leave(10000))
 
 print("The total number of people in the map is: "..m:members())m:dumps()
 
